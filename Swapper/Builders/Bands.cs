@@ -6,7 +6,7 @@ internal class Bands : IBands
 
     public Bands(Builder builder) => _builder = builder;
     public Builder Mirror() => _builder.Add(Swapper.Mirror.Bands);
-    public Builder Shuffle() => _builder.Add(grid => new Shuffler(new Random()).Bands(grid));
+    public Builder Shuffle() => _builder.Add((grid, random) => new Shuffler(random).Bands(grid));
     public Builder ForEach(Action<IBand> apply) => _builder.Add(grid =>
     {
         var builder = new Builder();

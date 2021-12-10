@@ -4,23 +4,28 @@ namespace Swapper;
 
 public class Builder
 {
-    private readonly List<Func<Grid, Grid>> _mutators = new();
-    private readonly Shuffler _shuffle = new(new Random());
+    private readonly List<Func<Grid, Random, Grid>> _mutators = new();
 
     public Builder Shuffle(string alphabet, string with) => 
-        Add(grid => _shuffle.Alphabet(grid, alphabet, with));
+        Add((grid, random) => new Shuffler(random).Alphabet(grid, alphabet, with));
 
     public Builder Shuffle(string alphabet) =>
-        Add(grid => _shuffle.Alphabet(grid, alphabet));
+        Add((grid, random) => new Shuffler(random).Alphabet(grid, alphabet));
 
-    public Builder Add(Func<Grid, Grid> mutator)
+    public Builder Add(Func<Grid, Random, Grid> mutator)
     {
         _mutators.Add(mutator);
         return this;
     }
+    
+    public Builder Add(Func<Grid, Grid> mutator)
+    {
+        _mutators.Add((g, r) => mutator(g));
+        return this;
+    }
 
-    public Grid Apply(Grid grid) => 
-        _mutators.Aggregate(grid, (current, mutator) => mutator(current));
+    public Grid Apply(Grid grid, Random? random = null) => 
+        _mutators.Aggregate(grid, (current, mutator) => mutator(current, random ?? new Random()));
 
     public Builder Rotate() => Add(Swapper.Rotate.Clockwise);
 

@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -24,13 +25,12 @@ public class All
             .Band(0).Swap(1)
             .Band(0).Mirror()
             .Bands().Mirror()
-            .Rotate()
-            ;
+            .Rotate();
         
-        Grid starter = "EA030C000010000000002B000000640AG8C070302F00005E07000100ED000B0CF452000000G700E000000000900000BF000GE701D0FB9600000E000560427D0000F68509300020000027B30G4095F0008B000002000000000E006A000000B841903000AB007000F05G00002E0A0F09DB60BD00000034000000000G0000D03087";
-        _output.WriteLine(builder.Apply(starter).ToString());
+        Grid starter = "105000020000306500004106000010000205";
+        _output.WriteLine(builder.Apply(starter, new Random(1234)).ToString());
 
-        Grid solution = "513246246135624351135624351462462513"; 
-        _output.WriteLine(builder.Apply(solution).ToString());
+        Grid solution = "145623623451316542254136562314431265"; 
+        _output.WriteLine(builder.Apply(solution, new Random(1234)).ToString());
     }
 }

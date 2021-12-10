@@ -1,9 +1,10 @@
+using System;
 using FluentAssertions;
 using Xunit;
 
 namespace Swapper.Tests;
 
-public class Shuffler
+public static class ShuffleExt
 {
     [Fact]
     public static void Test1()
@@ -20,7 +21,7 @@ public class Shuffler
             "BCDA" +
             "DABC";
 
-        input.Shuffle("1234", "ABCD").Should().Be(expected);
+        new Shuffler(new Random()).Alphabet(input, "1234", "ABCD").Should().Be(expected);
     }
     
     [Fact]
@@ -32,7 +33,7 @@ public class Shuffler
             "2341" +
             "4123";
 
-        input.Shuffle("1234").Should().NotBe(input);
+        new Shuffler(new Random()).Alphabet(input, "1234").Should().NotBe(input);
     }
     
     [Fact]
@@ -43,7 +44,16 @@ public class Shuffler
             "3412" +
             "2341" +
             "4123";
+        
+        Grid expected =
+            ".BCD" +
+            "CDAB" +
+            "BCDA" +
+            "DABC";
 
-        input.Shuffle("1234").ToString().Should().Match(".*");
+        new Shuffler(new Random())
+            .Alphabet(input, "1234", "ABCD")
+            .Should()
+            .Be(expected);
     }
 }

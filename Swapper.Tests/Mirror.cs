@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Swapper.Tests;
 
-public class Mirror
+public class MirrorTests
 {
     [Fact]
     public void Columns()
@@ -20,7 +20,7 @@ public class Mirror
             "4321" +
             "4321";
 
-        input.MirrorColumns().Should().Be(expected);
+        Mirror.Columns(input).Should().Be(expected);
     }
     
     [Fact]
@@ -38,7 +38,7 @@ public class Mirror
             "2134" +
             "2134";
 
-        input.MirrorStack(0).Should().Be(expected);
+        input.Stack(0).Should().Be(expected);
     }
     
     [Fact]
@@ -56,7 +56,7 @@ public class Mirror
             "3412" +
             "3412";
 
-        input.MirrorStacks().Should().Be(expected);
+        input.Stacks().Should().Be(expected);
     }
     
     [Fact]
@@ -74,7 +74,7 @@ public class Mirror
             "2222" +
             "1111";
 
-        input.MirrorRows().Should().Be(expected);
+        input.Rows().Should().Be(expected);
     }
     
     [Fact]
@@ -92,7 +92,7 @@ public class Mirror
             "3333" +
             "4444";
 
-        input.MirrorBand(0).Should().Be(expected);
+        Mirror.Band(input, 0).Should().Be(expected);
     }
     
     [Fact]
@@ -112,6 +112,6 @@ public class Mirror
             "2222" +
             "";
 
-        input.MirrorBands().Should().Be(expected);
+        Mirror.Bands(input).Should().Be(expected);
     }
 }

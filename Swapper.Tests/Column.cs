@@ -14,7 +14,7 @@ public class Column
             "2341" +
             "4123";
 
-        var output = Mutations.Column(input, 0, 1);
+        var output = Swap.Column(input, 0, 1);
         output.Should().Be(
             "2134" +
             "4312" +
@@ -31,7 +31,7 @@ public class Column
             "1234" +
             "1234";
 
-        var output = Mutations.Column(input, 2, 3);
+        var output = Swap.Column(input, 2, 3);
         output.Should().Be(
             "1243" +
             "1243" +
@@ -64,7 +64,7 @@ public class Column
             "213444444" +
             "213444444";
         
-        input.Column(0, 1).Should().Be(expected);
+        Swap.Column(input, 0, 1).Should().Be(expected);
     }
     
     [Fact]
@@ -92,6 +92,6 @@ public class Column
             "321444444" +
             "321444444";
         
-        input.Column(0, 2).Should().Be(expected);
+        Swap.Column(input, 0, 2).Should().Be(expected);
     }
 }

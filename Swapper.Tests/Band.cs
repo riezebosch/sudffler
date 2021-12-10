@@ -20,7 +20,7 @@ public class Band
             "1111" +
             "2222";
 
-        input.Band(0, 1).Should().Be(expected);
+        Swap.Band(input, 0, 1).Should().Be(expected);
     }
     
     [Fact]
@@ -48,7 +48,7 @@ public class Band
             "222222222" +
             "333333333";
 
-        input.Band(0, 2).Should().Be(expected);
+        Swap.Band(input, 0, 2).Should().Be(expected);
     }
     
     [Fact]
@@ -70,6 +70,6 @@ public class Band
             "555555" +
             "666666";
 
-        input.Band(0, 1).Should().Be(expected);
+        Swap.Band(input, 0, 1).Should().Be(expected);
     }
 }

@@ -1,7 +1,6 @@
 using System;
 using FluentAssertions;
 using NSubstitute;
-using Swapper.Shuffle;
 using Xunit;
 
 namespace Swapper.Tests.Shuffle;
@@ -38,7 +37,7 @@ public class Stack
         var rnd = Substitute.For<Random>();
         rnd.Next(3).Returns(1);
 
-        new Swapper.Shuffle.Stack(rnd).Apply(input).Should().Be(expected);
+        new Shuffler(rnd).Stack(input).Should().Be(expected);
     }
     
     [Fact]
@@ -65,6 +64,6 @@ public class Stack
         var rnd = Substitute.For<Random>();
         rnd.Next(3).Returns(1);
 
-        new Swapper.Shuffle.Stack(rnd).Apply(input).Should().Be(expected);
+        new Shuffler(rnd).Stack(input).Should().Be(expected);
     }
 }

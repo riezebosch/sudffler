@@ -3,13 +3,12 @@ using Xunit;
 
 namespace Swapper.Tests;
 
-public class Rotate
+public class RotateTests
 {
     [Fact]
     public void Test1()
     {
         /*
-         
             1234
             3412
             2341
@@ -58,7 +57,7 @@ public class Rotate
             "2413" +
             "3124";
         
-        input.Rotate().Should().Be(expected);
+        Rotate.Clockwise(input).Should().Be(expected);
     }
     
     [Fact]
@@ -86,6 +85,6 @@ public class Rotate
             "433333321" +
             "433333321";
 
-        input.Rotate().Should().Be(expected);
+        Rotate.Clockwise(input).Should().Be(expected);
     }
 }

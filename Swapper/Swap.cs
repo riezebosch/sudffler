@@ -1,39 +1,7 @@
 namespace Swapper;
 
-public static class Mutations
+public static class Swap
 {
-    public static Grid Rotate(this Grid source)
-    {
-        var target = Grid.Empty(source.Size);
-        var length = source.Size.Lower();
-        
-        for (var row = 0; row < length; row++)
-        {
-            var column = length - row - 1;
-            for (var cell = 0; cell < length; cell++)
-            {
-                target[cell * length + column] = source[row * length + cell];
-            }
-        }
-
-        return target;
-    }
-
-    public static Grid Shuffle(this Grid source, string alphabet) => 
-        Shuffle(source, alphabet, alphabet.Shuffle()); 
-
-    public static Grid Shuffle(this Grid source, string alphabet, string becomes)
-    {
-        var target = Grid.Empty(source.Size);
-        for (var i = 0; i < source.Size; i++)
-        {
-            var index = alphabet.IndexOf(source[i]);
-            target[i] = index >= 0 ? becomes[index] : source[i];
-        }
-
-        return target;
-    }
-
     public static Grid Column(this Grid grid, int column, int with)
     {
         var length = grid.Size.Lower();
@@ -56,7 +24,7 @@ public static class Mutations
         return grid;
     }
 
-    public static Grid Row(this Grid grid, int row, int with)
+    public static Grid Row(Grid grid, int row, int with)
     {
         var length = grid.Size.Lower();
         for (var cell = 0; cell < length; cell++)
@@ -69,7 +37,7 @@ public static class Mutations
         return grid;
     }
 
-    public static Grid Band(this Grid grid, int band, int with)
+    public static Grid Band(Grid grid, int band, int with)
     {
         var length = grid.Size.Lower().Lower();
         for (var row = 0; row < length; row++)

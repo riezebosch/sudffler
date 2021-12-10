@@ -40,7 +40,7 @@ public class BuilderTests
                 "3412" +
                 "3412";
 
-            new Builder().Swap.Stack(0).With(1).Apply(input).Should().Be(expected);
+            new Builder().Stack(0).Swap(1).Apply(input).Should().Be(expected);
         }
 
         [Fact]
@@ -58,7 +58,7 @@ public class BuilderTests
                 "1111" +
                 "2222";
 
-            new Builder().Swap.Band(0).With(1).Apply(input).Should().Be(expected);
+            new Builder().Band(0).Swap(1).Apply(input).Should().Be(expected);
         }
     }
 
@@ -71,15 +71,21 @@ public class BuilderTests
                 "1111" +
                 "2222" +
                 "3333" +
-                "4444";
+                "4444" +
+                "";
 
             Grid expected =
-                "2222" +
-                "1111" +
+                "3333" +
                 "4444" +
-                "3333";
+                "1111" +
+                "2222" +
+                "";
 
-            new Builder().Mirror.Bands().Apply(input).Should().Be(expected);
+            new Builder()
+                .Bands()
+                .Mirror()
+                .Apply(input)
+                .Should().Be(expected);
         }
 
         [Fact]
@@ -98,7 +104,12 @@ public class BuilderTests
                 "4444" +
                 "";
 
-            new Builder().Mirror.Band(0).Apply(input).Should().Be(expected);
+            new Builder()
+                .Band(0)
+                .Mirror()
+                .Apply(input)
+                .Should()
+                .Be(expected);
         }
         
         [Fact]
@@ -118,7 +129,12 @@ public class BuilderTests
                 "1111" +
                 "";
 
-            new Builder().Mirror.Rows().Apply(input).Should().Be(expected);
+            new Builder()
+                .Rows()
+                .Mirror()
+                .Apply(input)
+                .Should()
+                .Be(expected);
         }
 
         [Fact]
@@ -131,13 +147,17 @@ public class BuilderTests
                 "1234";
 
             Grid expected =
-                "2143" +
-                "2143" +
-                "2143" +
-                "2143" +
+                "3412" +
+                "3412" +
+                "3412" +
+                "3412" +
                 "";
 
-            new Builder().Mirror.Stacks().Apply(input).Should().Be(expected);
+            new Builder()
+                .Stacks()
+                .Mirror()
+                .Apply(input)
+                .Should().Be(expected);
         }
         
         [Fact]
@@ -156,7 +176,12 @@ public class BuilderTests
                 "2134" +
                 "";
 
-            new Builder().Mirror.Stack(0).Apply(input).Should().Be(expected);
+            new Builder()
+                .Stack(0)
+                .Mirror()
+                .Apply(input)
+                .Should()
+                .Be(expected);
         }
         
         [Fact]
@@ -175,7 +200,36 @@ public class BuilderTests
                 "4321" +
                 "";
 
-            new Builder().Mirror.Columns().Apply(input).Should().Be(expected);
+            new Builder()
+                .Columns()
+                .Mirror()
+                .Apply(input)
+                .Should()
+                .Be(expected);
+        }
+        
+        [Fact]
+        public void ForEach()
+        {
+            Grid input =
+                "1111" +
+                "2222" +
+                "3333" +
+                "4444" +
+                "";
+
+            Grid expected =
+                "2222" +
+                "1111" +
+                "4444" +
+                "3333" +
+                "";
+
+            new Builder()
+                .Bands()
+                .ForEach(band => band.Mirror())
+                .Apply(input)
+                .Should().Be(expected);
         }
     }
 }

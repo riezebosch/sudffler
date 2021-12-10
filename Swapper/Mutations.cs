@@ -50,7 +50,7 @@ public static class Mutations
         var length = grid.Size.Lower().Higher();
         for (var column = 0; column < length; column++)
         {
-            grid = grid.Column(stack + column, length * with + column);
+            grid = grid.Column(length * stack + column, length * with + column);
         }
 
         return grid;

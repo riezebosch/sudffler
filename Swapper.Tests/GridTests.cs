@@ -12,4 +12,8 @@ public static class GridTests
     [Fact]
     public static void String() => 
         new Grid("1234").ToString().Should().Be("1234");
+    
+    [Fact]
+    public static void Operator() =>
+        (new Grid("1") != new Grid("2")).Should().BeTrue();
 }

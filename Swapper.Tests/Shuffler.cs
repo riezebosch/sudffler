@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Swapper.Tests;
 
-public class Shuffle
+public class Shuffler
 {
     [Fact]
     public static void Test1()

@@ -23,10 +23,10 @@ public static class Mirror
     
     public static Grid MirrorStacks(this Grid grid)
     {
-        var length = grid.Size.Lower().Lower();
-        for (var stack = 0; stack < length; stack++)
+        var right = grid.Size.Lower().Lower() -1;
+        for (var left = 0; left < right; left++, right--)
         {
-            grid = grid.MirrorStack(stack);
+            grid = grid.Stack(left, right);
         }
 
         return grid;
@@ -37,10 +37,10 @@ public static class Mirror
     
     public static Grid MirrorBands(this Grid grid)
     {
-        var length = grid.Size.Lower().Higher();
-        for (var band = 0; band < length; band++)
+        var right = grid.Size.Lower().Higher() - 1;
+        for (var left = 0; left < right; left++, right--)
         {
-            grid = grid.MirrorBand(band);
+            grid = grid.Band(left, right);
         }
         
         return grid;

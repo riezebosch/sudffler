@@ -51,10 +51,10 @@ public class Mirror
             "1234";
         
         Grid expected =
-            "2143" +
-            "2143" +
-            "2143" +
-            "2143";
+            "3412" +
+            "3412" +
+            "3412" +
+            "3412";
 
         input.MirrorStacks().Should().Be(expected);
     }
@@ -102,13 +102,15 @@ public class Mirror
             "1111" +
             "2222" +
             "3333" +
-            "4444";
+            "4444" + 
+            "";
         
         Grid expected =
-            "2222" +
-            "1111" +
+            "3333" +
             "4444" +
-            "3333";
+            "1111" +
+            "2222" +
+            "";
 
         input.MirrorBands().Should().Be(expected);
     }

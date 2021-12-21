@@ -37,7 +37,40 @@ public class Stack
         var rnd = Substitute.For<Random>();
         rnd.Next(3).Returns(1);
 
-        new Shuffler(rnd).Stack(input).Should().Be(expected);
+        new Shuffler(rnd).Stack(input, 0).Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Other()
+    {
+        Grid input =
+            "123456789" +
+            "123456789" +
+            "123456789" +
+            "123456789" +
+            "123456789" +
+            "123456789" +
+            "123456789" +
+            "123456789" +
+            "123456789" +
+            "";
+        
+        Grid expected =
+            "123564789" +
+            "123564789" +
+            "123564789" +
+            "123564789" +
+            "123564789" +
+            "123564789" +
+            "123564789" +
+            "123564789" +
+            "123564789" +
+            "";
+
+        var rnd = Substitute.For<Random>();
+        rnd.Next(3).Returns(1);
+
+        new Shuffler(rnd).Stack(input, 1).Should().Be(expected);
     }
     
     [Fact]
@@ -64,6 +97,6 @@ public class Stack
         var rnd = Substitute.For<Random>();
         rnd.Next(3).Returns(1);
 
-        new Shuffler(rnd).Stack(input).Should().Be(expected);
+        new Shuffler(rnd).Stack(input, 0).Should().Be(expected);
     }
 }

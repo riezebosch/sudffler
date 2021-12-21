@@ -1,3 +1,5 @@
+using Swapper.Builders;
+
 namespace Swapper;
 
 public class Shuffler
@@ -22,22 +24,22 @@ public class Shuffler
     }
 
     public Grid Stacks(Grid grid) => 
-        Shuffle(grid, grid.Size.Lower().Lower(), Swap.Stack);
+        Shuffle(grid, 0, grid.Size.Side().Stacks(), Swap.Stack);
     
     public Grid Bands(Grid grid) => 
-        Shuffle(grid, grid.Size.Lower().Higher(), Swap.Band);
+        Shuffle(grid, 0, grid.Size.Side().Bands(), Swap.Band);
     
-    public Grid Band(Grid grid) => 
-        Shuffle(grid, grid.Size.Lower().Lower(), Swap.Row);
+    public Grid Band(Grid grid, int band) => 
+        Shuffle(grid, band * grid.Size.Side().Bands(), grid.Size.Side().Rows(), Swap.Row);
 
-    public Grid Stack(Grid grid) => 
-        Shuffle(grid, grid.Size.Lower().Higher(), Swap.Column);
+    public Grid Stack(Grid grid, int stack) => 
+        Shuffle(grid, stack * grid.Size.Side().Stacks(), grid.Size.Side().Columns(), Swap.Column);
 
-    private Grid Shuffle(Grid grid, Size length, Func<Grid, int, int, Grid> swap)
+    private Grid Shuffle(Grid grid, int start, Size length, Func<Grid, int, int, Grid> swap)
     {
         for (var i = 0; i < length; i++)
         {
-            grid = swap(grid, i, _rnd.Next(length));
+            grid = swap(grid, start + i, start + _rnd.Next(length));
         }
 
         return grid;

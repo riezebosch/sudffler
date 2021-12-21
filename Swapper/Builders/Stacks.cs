@@ -10,7 +10,7 @@ internal class Stacks : IStacks
     public Builder ForEach(Action<IStack> apply) => _builder.Add(grid =>
     {
         var builder = new Builder();
-        var stacks = grid.Size.Lower().Lower();
+        var stacks = grid.Size.Stacks().Rows();
             
         for (var stack = 0; stack < stacks; stack++)
         {

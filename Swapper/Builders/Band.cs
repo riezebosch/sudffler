@@ -8,5 +8,5 @@ internal class Band : IBand
     public Band(Builder builder, int band) => (_builder, _band) = (builder, band);
     public Builder Swap(int with) => _builder.Add(grid => Swapper.Swap.Band(grid, _band, with));
     public Builder Mirror() => _builder.Add(grid => Swapper.Mirror.Band(grid, _band));
-    public Builder Shuffle() => _builder.Add((grid, random) => new Shuffler(random).Band(grid));
+    public Builder Shuffle() => _builder.Add((grid, random) => new Shuffler(random).Band(grid, _band));
 }

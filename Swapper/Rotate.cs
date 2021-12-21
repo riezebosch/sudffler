@@ -1,3 +1,5 @@
+using Swapper.Builders;
+
 namespace Swapper;
 
 public static class Rotate
@@ -5,7 +7,7 @@ public static class Rotate
     public static Grid Clockwise(Grid source)
     {
         var target = Grid.Empty(source.Size);
-        var length = source.Size.Lower();
+        var length = source.Size.Rows();
         
         for (var row = 0; row < length; row++)
         {

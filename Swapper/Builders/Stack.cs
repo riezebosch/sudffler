@@ -7,6 +7,6 @@ internal class Stack : IStack
 
     public Stack(Builder builder, int stack) => (_builder, _stack) = (builder, stack);
     public Builder Swap(int with) => _builder.Add(grid => Swapper.Swap.Stack(grid, _stack, with));
-    public Builder Mirror() => _builder.Add(grid => grid.Stack(_stack));
+    public Builder Mirror() => _builder.Add(grid => Swapper.Mirror.Stack(grid, _stack));
     public Builder Shuffle() => _builder.Add((grid, random) => new Shuffler(random).Stack(grid, _stack));
 }

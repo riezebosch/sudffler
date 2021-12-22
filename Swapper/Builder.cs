@@ -20,7 +20,7 @@ public class Builder
     
     public Builder Add(Func<Grid, Grid> mutator)
     {
-        _mutators.Add((g, r) => mutator(g));
+        _mutators.Add((g, _) => mutator(g));
         return this;
     }
 

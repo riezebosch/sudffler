@@ -6,7 +6,7 @@ namespace Swapper.Tests;
 public class Stack
 {
     [Fact]
-    public void Swap()
+    public void First()
     {
         Grid input =
             "1234" +
@@ -20,7 +20,7 @@ public class Stack
             "3412" +
             "3412";
 
-        Swapper.Swap.Stack(input, 0, 1).Should().Be(expected);
+        Swap.Stack(input, 0, 1).Should().Be(expected);
     }
     
     [Fact]
@@ -48,7 +48,7 @@ public class Stack
             "789456123" +
             "789456123";
 
-        Swapper.Swap.Stack(input, 0, 2).Should().Be(expected);
+        Swap.Stack(input, 0, 2).Should().Be(expected);
     }
     
     [Fact]
@@ -71,6 +71,6 @@ public class Stack
             "456123" +
             "456123";
 
-        Swapper.Swap.Stack(input, 0, 1).Should().Be(expected);
+        Swap.Stack(input, 0, 1).Should().Be(expected);
     }
 }

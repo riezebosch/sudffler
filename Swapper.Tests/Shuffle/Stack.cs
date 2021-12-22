@@ -92,7 +92,7 @@ public class Stack
             "231456" +
             "231456" +
             "231456" +
-            "";;
+            "";
 
         var rnd = Substitute.For<Random>();
         rnd.Next(3).Returns(1);

@@ -10,7 +10,7 @@ internal class Bands : IBands
     public Builder ForEach(Action<IBand> apply) => _builder.Add(grid =>
     {
         var builder = new Builder();
-        var bands = grid.Size.Stacks().Columns();
+        var bands = grid.Size.R;
             
         for (var band = 0; band < bands; band++)
         {
@@ -19,13 +19,4 @@ internal class Bands : IBands
 
         return builder.Apply(grid);
     });
-}
-
-public static class SizeHelpers
-{
-    public static Size Side(this Size grid) => grid.Lower();
-    public static Size Stacks(this Size grid) => grid.Lower();
-    public static Size Columns(this Size grid) => grid.Higher();
-    public static Size Bands(this Size grid) => grid.Higher();
-    public static Size Rows(this Size grid) => grid.Lower();
 }

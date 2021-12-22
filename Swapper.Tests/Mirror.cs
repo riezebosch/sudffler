@@ -38,7 +38,29 @@ public class MirrorTests
             "2134" +
             "2134";
 
-        input.Stack(0).Should().Be(expected);
+        Mirror.Stack(input, 0).Should().Be(expected);
+    }
+    
+    [Fact]
+    public void StackUneven()
+    {
+        Grid input =
+            "123456" +
+            "123456" +
+            "123456" +
+            "123456" +
+            "123456" +
+            "123456";
+        
+        Grid expected =
+            "213456" +
+            "213456" +
+            "213456" +
+            "213456" +
+            "213456" +
+            "213456";
+
+        Mirror.Stack(input, 0).Should().Be(expected);
     }
     
     [Fact]
@@ -56,7 +78,29 @@ public class MirrorTests
             "3412" +
             "3412";
 
-        input.Stacks().Should().Be(expected);
+        Mirror.Stacks(input).Should().Be(expected);
+    }
+    
+    [Fact]
+    public void Uneven()
+    {
+        Grid input =
+            "111222" +
+            "111222" +
+            "111222" +
+            "111222" +
+            "111222" +
+            "111222";
+        
+        Grid expected =
+            "222111" +
+            "222111" +
+            "222111" +
+            "222111" +
+            "222111" +
+            "222111";
+
+        Mirror.Stacks(input).Should().Be(expected);
     }
     
     [Fact]
@@ -74,7 +118,7 @@ public class MirrorTests
             "2222" +
             "1111";
 
-        input.Rows().Should().Be(expected);
+        Mirror.Rows(input).Should().Be(expected);
     }
     
     [Fact]

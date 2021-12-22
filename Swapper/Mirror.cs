@@ -1,31 +1,26 @@
-using Swapper.Builders;
-
 namespace Swapper;
 
 public static class Mirror
 {
     public static Grid Columns(Grid grid) => 
-        Columns(grid, 0, grid.Size.Stacks() - 1);
+        Columns(grid, 0, grid.Size.N - 1);
 
     private static Grid Columns(Grid grid, int left, int right)
     {
         for (; left < right; left++, right--)
         {
-            grid = grid.Column(left, right);
+            grid = Swap.Column(grid, left, right);
         }
 
         return grid;
     }
 
-    public static Grid Stack(this Grid grid, int stack)
+    public static Grid Stack(Grid grid, int stack) => 
+        Columns(grid, stack * grid.Size.R, (stack + 1) * grid.Size.R - 1);
+
+    public static Grid Stacks(Grid grid)
     {
-        var length = grid.Size.Bands().Rows();
-        return Columns(grid, stack * length, (stack + 1) * length - 1);
-    }
-    
-    public static Grid Stacks(this Grid grid)
-    {
-        var right = grid.Size.Bands().Rows() -1;
+        var right = grid.Size.R -1;
         for (var left = 0; left < right; left++, right--)
         {
             grid = Swap.Stack(grid, left, right);
@@ -34,12 +29,9 @@ public static class Mirror
         return grid;
     }
 
-    public static Grid Rows(this Grid grid) =>
-        Rows(grid, 0, grid.Size.Bands() - 1);
-    
     public static Grid Bands(Grid grid)
     {
-        var right = grid.Size.Bands().Columns() - 1;
+        var right = grid.Size.C - 1;
         for (var left = 0; left < right; left++, right--)
         {
             grid = Swap.Band(grid, left, right);
@@ -47,12 +39,13 @@ public static class Mirror
         
         return grid;
     }
-    
-    public static Grid Band(Grid grid, int band)
-    {
-        var length = grid.Size.Bands().Rows();
-        return Rows(grid, band * length, (band + 1) * length - 1);
-    }
+
+    public static Grid Band(Grid grid, int band) => 
+        Rows(grid, band * grid.Size.R, (band + 1) * grid.Size.R - 1);
+
+    public static Grid Rows(Grid grid) =>
+        Rows(grid, 0, grid.Size.N - 1);
+
     private static Grid Rows(Grid grid, int start , int end)
     {
         for (; start < end; start++, end--)

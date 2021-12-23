@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace Swapper.Tests;
+namespace Swapper.Tests.Swap;
 
 public class Stack
 {
@@ -20,7 +20,7 @@ public class Stack
             "3412" +
             "3412";
 
-        Swap.Stack(input, 0, 1).Should().Be(expected);
+        Swapper.Swap.Stack(input, 0, 1).Should().Be(expected);
     }
     
     [Fact]
@@ -48,7 +48,7 @@ public class Stack
             "789456123" +
             "789456123";
 
-        Swap.Stack(input, 0, 2).Should().Be(expected);
+        Swapper.Swap.Stack(input, 0, 2).Should().Be(expected);
     }
     
     [Fact]
@@ -71,6 +71,6 @@ public class Stack
             "456123" +
             "456123";
 
-        Swap.Stack(input, 0, 1).Should().Be(expected);
+        Swapper.Swap.Stack(input, 0, 1).Should().Be(expected);
     }
 }

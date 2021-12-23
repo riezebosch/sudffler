@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace Swapper.Tests;
+namespace Swapper.Tests.Swap;
 
 public class Row
 {
@@ -20,7 +20,7 @@ public class Row
             "2341" +
             "4123";
         
-        Swap.Row(input, 0, 1).Should().Be(expected);
+        Swapper.Swap.Row(input, 0, 1).Should().Be(expected);
     }
     
     [Fact]
@@ -38,7 +38,7 @@ public class Row
             "4444" +
             "3333";
         
-        Swap.Row(input, 2, 3).Should().Be(
+        Swapper.Swap.Row(input, 2, 3).Should().Be(
             expected);
     }
     
@@ -67,7 +67,7 @@ public class Row
             "333333333" +
             "444444444";
         
-        Swap.Row(input, 0, 1).Should().Be(expected);
+        Swapper.Swap.Row(input, 0, 1).Should().Be(expected);
     }
     
     [Fact]
@@ -95,6 +95,6 @@ public class Row
             "333333333" +
             "444444444";
         
-        Swap.Row(input, 0, 2).Should().Be(expected);
+        Swapper.Swap.Row(input, 0, 2).Should().Be(expected);
     }
 }

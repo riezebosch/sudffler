@@ -7,18 +7,9 @@ public static class Swap
         var length = grid.Size.N;
         for (var cell = 0; cell < grid.Size; cell += length)
         {
-            (grid[cell + column], grid[cell + with]) = (grid[cell + with], grid[cell + column]);
-        }
-
-        return grid;
-    }
-
-    public static Grid Stack(Grid grid, int stack, int with)
-    {
-        var length = grid.Size.C;
-        for (var column = 0; column < length; column++)
-        {
-            grid = Column(grid, length * stack + column, length * with + column);
+            var a =  column + cell;
+            var b =  with + cell;
+            (grid[a], grid[b]) = (grid[b], grid[a]);
         }
 
         return grid;
@@ -32,6 +23,17 @@ public static class Swap
             var a = row * length + cell;
             var b = with * length + cell;
             (grid[a], grid[b]) = (grid[b], grid[a]);
+        }
+
+        return grid;
+    }
+
+    public static Grid Stack(Grid grid, int stack, int with)
+    {
+        var length = grid.Size.C;
+        for (var column = 0; column < length; column++)
+        {
+            grid = Column(grid, length * stack + column, length * with + column);
         }
 
         return grid;

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swapper", "Swapper\Swapper.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swapper.Tests", "Swapper.Tests\Swapper.Tests.csproj", "{B1E9BA7D-1DFC-434B-8323-997A1DC638E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swapper.Console", "Swapper.Console\Swapper.Console.csproj", "{F10E6585-560D-49F7-9A78-FEAA7978B765}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B1E9BA7D-1DFC-434B-8323-997A1DC638E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1E9BA7D-1DFC-434B-8323-997A1DC638E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1E9BA7D-1DFC-434B-8323-997A1DC638E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F10E6585-560D-49F7-9A78-FEAA7978B765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10E6585-560D-49F7-9A78-FEAA7978B765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F10E6585-560D-49F7-9A78-FEAA7978B765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F10E6585-560D-49F7-9A78-FEAA7978B765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

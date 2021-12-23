@@ -3,54 +3,28 @@ namespace Swapper;
 public static class Mirror
 {
     public static Grid Columns(Grid grid) => 
-        Columns(grid, 0, grid.Size.N - 1);
-
-    private static Grid Columns(Grid grid, int left, int right)
-    {
-        for (; left < right; left++, right--)
-        {
-            grid = Swap.Column(grid, left, right);
-        }
-
-        return grid;
-    }
+        Do(grid, 0, grid.Size.N, Swap.Column);
 
     public static Grid Stack(Grid grid, int stack) => 
-        Columns(grid, stack * grid.Size.R, (stack + 1) * grid.Size.R - 1);
+        Do(grid, stack * grid.Size.R, (stack + 1) * grid.Size.R, Swap.Column);
 
-    public static Grid Stacks(Grid grid)
-    {
-        var right = grid.Size.R -1;
-        for (var left = 0; left < right; left++, right--)
-        {
-            grid = Swap.Stack(grid, left, right);
-        }
+    public static Grid Stacks(Grid grid) => 
+        Do(grid, 0, grid.Size.R, Swap.Stack);
 
-        return grid;
-    }
-
-    public static Grid Bands(Grid grid)
-    {
-        var right = grid.Size.C - 1;
-        for (var left = 0; left < right; left++, right--)
-        {
-            grid = Swap.Band(grid, left, right);
-        }
-        
-        return grid;
-    }
+    public static Grid Bands(Grid grid) => 
+        Do(grid, 0, grid.Size.C, Swap.Band);
 
     public static Grid Band(Grid grid, int band) => 
-        Rows(grid, band * grid.Size.R, (band + 1) * grid.Size.R - 1);
+        Do(grid, band * grid.Size.R, (band + 1) * grid.Size.R, Swap.Row);
 
     public static Grid Rows(Grid grid) =>
-        Rows(grid, 0, grid.Size.N - 1);
+        Do(grid, 0, grid.Size.N, Swap.Row);
 
-    private static Grid Rows(Grid grid, int start , int end)
+    private static Grid Do(Grid grid, int start, int stop, Func<Grid, int, int, Grid> mirror)
     {
-        for (; start < end; start++, end--)
+        while (start < stop)
         {
-            grid = Swap.Row(grid, start, end);
+            grid = mirror(grid, start++, --stop);
         }
 
         return grid;

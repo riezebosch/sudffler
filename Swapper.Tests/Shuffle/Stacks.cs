@@ -37,7 +37,7 @@ namespace Swapper.Tests.Shuffle
             var rnd = Substitute.For<Random>();
             rnd.Next(3).Returns(1);
 
-            new Shuffler(rnd).Stacks(input).Should().Be(expected);
+            rnd.Shuffle().Stacks(input).Should().Be(expected);
         }
     
         [Fact]
@@ -64,7 +64,7 @@ namespace Swapper.Tests.Shuffle
             var rnd = Substitute.For<Random>();
             rnd.Next(2).Returns(1);
 
-            new Shuffler(rnd).Stacks(input).Should().Be(expected);
+            rnd.Shuffle().Stacks(input).Should().Be(expected);
         }
     }
 }

@@ -21,7 +21,7 @@ public static class ShuffleExt
             "BCDA" +
             "DABC";
 
-        new Shuffler(new Random()).Alphabet(input, "1234", "ABCD").Should().Be(expected);
+        new Random().Shuffle().Alphabet(input, "1234", "ABCD").Should().Be(expected);
     }
     
     [Fact]
@@ -33,7 +33,7 @@ public static class ShuffleExt
             "2341" +
             "4123";
 
-        new Shuffler(new Random()).Alphabet(input, "1234").Should().NotBe(input);
+        new Random().Shuffle().Alphabet(input, "1234").Should().NotBe(input);
     }
     
     [Fact]
@@ -51,7 +51,7 @@ public static class ShuffleExt
             "BCDA" +
             "DABC";
 
-        new Shuffler(new Random())
+        new Random().Shuffle()
             .Alphabet(input, "1234", "ABCD")
             .Should()
             .Be(expected);

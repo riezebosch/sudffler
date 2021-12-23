@@ -37,7 +37,7 @@ public class Stack
         var rnd = Substitute.For<Random>();
         rnd.Next(3).Returns(1);
 
-        new Shuffler(rnd).Stack(input, 0).Should().Be(expected);
+        rnd.Shuffle().Stack(input, 0).Should().Be(expected);
     }
     
     [Fact]
@@ -70,7 +70,7 @@ public class Stack
         var rnd = Substitute.For<Random>();
         rnd.Next(3).Returns(1);
 
-        new Shuffler(rnd).Stack(input, 1).Should().Be(expected);
+        rnd.Shuffle().Stack(input, 1).Should().Be(expected);
     }
     
     [Fact]
@@ -97,6 +97,6 @@ public class Stack
         var rnd = Substitute.For<Random>();
         rnd.Next(3).Returns(1);
 
-        new Shuffler(rnd).Stack(input, 0).Should().Be(expected);
+        rnd.Shuffle().Stack(input, 0).Should().Be(expected);
     }
 }

@@ -7,10 +7,10 @@ public class Builder
     private readonly List<Func<Grid, Random, Grid>> _mutators = new();
 
     public Builder Shuffle(string alphabet, string with) => 
-        Add((grid, random) => new Shuffler(random).Alphabet(grid, alphabet, with));
+        Add((grid, random) => random.Shuffle().Alphabet(grid, alphabet, with));
 
     public Builder Shuffle(string alphabet) =>
-        Add((grid, random) => new Shuffler(random).Alphabet(grid, alphabet));
+        Add((grid, random) => random.Shuffle().Alphabet(grid, alphabet));
 
     public Builder Add(Func<Grid, Random, Grid> mutator)
     {

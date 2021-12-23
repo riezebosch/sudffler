@@ -27,7 +27,7 @@ public class Band
         var rnd = Substitute.For<Random>();
         rnd.Next(2).Returns(1);
 
-        new Shuffler(rnd).Band(input, 0).Should().Be(expected);
+        rnd.Shuffle().Band(input, 0).Should().Be(expected);
     }
     
     [Fact]
@@ -50,7 +50,7 @@ public class Band
         var rnd = Substitute.For<Random>();
         rnd.Next(2).Returns(1);
 
-        new Shuffler(rnd).Band(input, 1).Should().Be(expected);
+        rnd.Shuffle().Band(input, 1).Should().Be(expected);
     }
     
     [Fact]
@@ -77,6 +77,6 @@ public class Band
         var rnd = Substitute.For<Random>();
         rnd.Next(3).Returns(1);
 
-        new Shuffler(rnd).Band(input, 0).Should().Be(expected);
+        rnd.Shuffle().Band(input, 0).Should().Be(expected);
     }
 }

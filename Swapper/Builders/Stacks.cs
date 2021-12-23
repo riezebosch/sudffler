@@ -6,7 +6,7 @@ internal class Stacks : IStacks
 
     public Stacks(Builder builder) => _builder = builder;
     public Builder Mirror() => _builder.Add(Swapper.Mirror.Stacks);
-    public Builder Shuffle() => _builder.Add((grid, random) => new Shuffler(random).Stacks(grid));
+    public Builder Shuffle() => _builder.Add((grid, random) => random.Shuffle().Stacks(grid));
     public Builder ForEach(Action<IStack> apply) => _builder.Add(grid =>
     {
         var builder = new Builder();
